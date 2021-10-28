@@ -1,0 +1,17 @@
+<div class="show-page">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="<%= product.image_url %>" style="width: 100%">
+      <div class="actions">
+        <a href="/products/<%= product.id %>/edit" type="button" class="btn btn-primary">Edit</a>
+        <a href="/products/<%= product.id %>/delete" type="button" class="btn btn-danger">Delete</a>
+      </div>
+      </div>
+      <div class="col-md-9">
+        <h1><%= product.title %></h1>
+        <h3>Price: $<%= product.price %></h3>
+        <p><%= product.description %>
+          </p>
+      </div>
+    </div>
+  </div>

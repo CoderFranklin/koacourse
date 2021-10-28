@@ -1,0 +1,27 @@
+<div class="new-page">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Create New Product</h1>
+      <form action="/products" method="POST">
+      <div class="mb-3">
+  <label for="form-title" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" id="form-title">
+  </div>
+  <div class="mb-3">
+<label for="form-price" class="form-label">Price</label>
+<input type="text" name="price" class="form-control" id="form-price">
+</div>
+<div class="mb-3">
+<label for="form-image-url" class="form-label">Image URL</label>
+<input type="text" name="image_url" class="form-control" id="form-image-url">
+</div>
+<div class="mb-3">
+<label for="form-description" class="form-label">Description</label>
+<textarea name="description" class="form-control" id="form-description"></textarea>
+</div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+<div class="edit-page">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Edit Product</h1>
+      <form action="/products/<%= product.id %>" method="POST">
+      <div class="mb-3">
+  <label for="form-title" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" id="form-title" value="<%= product.title %>" >
+  </div>
+  <div class="mb-3">
+<label for="form-price" class="form-label">Price</label>
+<input type="text" name="price" class="form-control" id="form-price" value="<%= product.price %>" >
+</div>
+<div class="mb-3">
+<label for="form-image-url" class="form-label">Image URL</label>
+<input type="text" name="image_url" class="form-control" id="form-image-url" value="<%= product.image_url %>" >
+</div>titl
+<div class="mb-3">
+<label for="form-description" class="form-label">Description</label>
+<textarea name="description" class="form-control" id="form-description"><%= product.description %></textarea>
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+      <a href="/products/<%= product.id %>/delete" type="button" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
