@@ -135,23 +135,23 @@ router.get('/products/:id', async (ctx) =>{
 })
 
 //Update - Edit Existing Product
-router.post('/api/v1/products/:id', async (ctx) => {
+router.put('/api/v1/products/:id', async (ctx) => {
   let id = ctx.params.id,
   data =ctx.request.body,
   objIndex = products.findIndex((obj) => obj.id ==ctx.params.id);
-  products[objectIndex] = Object.assign(data, products[objIndex])
+  products[objIndex] = Object.assign(data, products[objIndex])
 
   return ctx.body = {
     "code": "200",
     "message": "Success",
-    "data": products[objectIndex]
+    "data": products[objIndex]
   }
 
 })
 
 //Edit- Show Individual Product
 
-router.get('/products/:id/edit', async (ctx) =>{
+router.get('/products/:id', async (ctx) =>{
   let product = products.filter((product) => product.id == ctx.params.id) [0]
 
   await ctx.render('products/edit', {
@@ -160,7 +160,7 @@ router.get('/products/:id/edit', async (ctx) =>{
 })
 
 //Delete - Delete Existing Product
-router.get('/products/:id/delete', async (ctx) => {
+router.del('/products/:id', async (ctx) => {
   let id = ctx.params.id
   products = products.filter((product) => product.id != id)
   return ctx.redirect(`/products`);
@@ -212,15 +212,15 @@ router.get('/api/v1/products', checkAPIKEY(), async (ctx) =>{
 
 
 
-//Save - Create New Products
+/*//Save - Create New Products
 router.post('/api/v1/products', checkAPIKEY(), async (ctx) => {
   let product =ctx.request.body,
-  id = products[produc/api/v1ts.length -1].id + 1;
+  id = products[products/api/v1.length -1].id + 1;
   product = Object.assign({id}, product)
   console.log(product)
   products.push(product)
   return ctx.redirect('/products');
-})
+})*/
 
 //New - Show Form To Create New Product
 /*router.get('/api/v1/products/new', checkAPIKEY() (ctx) =>{
@@ -238,11 +238,11 @@ router.get('/api/v1/products/:id', checkAPIKEY(), async (ctx) => {
 })
 
 //Update - Edit Existing Product
-router.put('/api/v1/products/:id', checkAPIKEY(),async (ctx) => {
+router.put('/api/v1/products/:id', checkAPIKEY(), async (ctx) => {
   let id = ctx.params.id,
   data = ctx.request.body,
-  objIndex = products.findIndex((obj) => obj.id == id)
-  products[objIndex] = Object.assign(data, products[objIndex]);
+  objIndex = products.findIndex((obj) => obj.id == id);
+  products[objIndex] = Object.assign(data, products[objIndex])
 
   return ctx.body = {
     "code": "200",
@@ -267,7 +267,8 @@ router.del('/api/v1/products/:id', checkAPIKEY(), async (ctx) => {
   products = products.filter((product) => product.id != id)
   return ctx.body = {
     "code": "200",
-    "message": `Success Product with id: ${id} has been deleted`,
+    "message": `Success Product with id: ${id} has been deleted`
+    
 
   }
 })
