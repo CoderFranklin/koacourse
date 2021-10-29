@@ -105,15 +105,7 @@ router.get('/products', async (ctx) =>{
   });
 })
 
-//Save - Create New Products
-router.post('/products', async (ctx) =>{
-  let product =ctx.request.body,
-  id = products[products.length -1].id + 1;
-  product = Object.assign({id}, product)
-  console.log(product)
-  products.push(product)
-  return ctx.redirect('/products');
-})
+
 
 //New - Show Form To Create New Product
 router.get('/products/new', async (ctx) =>{
@@ -139,7 +131,7 @@ router.put('/api/v1/products/:id', async (ctx) => {
   let id = ctx.params.id,
   data =ctx.request.body,
   objIndex = products.findIndex((obj) => obj.id ==ctx.params.id);
-  products[objIndex] = Object.assign(data, products[objIndex])
+  products[objIndex] = Object.assign(products[objIndex], data)
 
   return ctx.body = {
     "code": "200",
@@ -212,15 +204,20 @@ router.get('/api/v1/products', checkAPIKEY(), async (ctx) =>{
 
 
 
-/*//Save - Create New Products
+//Save - Create New Product
 router.post('/api/v1/products', checkAPIKEY(), async (ctx) => {
-  let product =ctx.request.body,
-  id = products[products/api/v1.length -1].id + 1;
+  let product = ctx.request.body,
+  id = products[products.length -1].id + 1;
   product = Object.assign({id}, product)
   console.log(product)
   products.push(product)
-  return ctx.redirect('/products');
-})*/
+  
+  return ctx.body = {
+    "code": "200",
+    "message": `Success Product with id: ${id} has been created`,
+    "data": products[id]
+  }
+})
 
 //New - Show Form To Create New Product
 /*router.get('/api/v1/products/new', checkAPIKEY() (ctx) =>{
