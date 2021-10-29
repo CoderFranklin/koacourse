@@ -197,8 +197,13 @@ if(API_KEY != ctx.request.query.API_KEY){
 
 
 //Index - Show All Products
-router.get('/api/v1/products', checkAPIKEY(), async (ctx) =>{
-  return ctx.body = products
+router.get('/api/v1/products', checkAPIKEY(), async (ctx) => {
+  
+  return ctx.body = {
+    "code": "200",
+    "message": `Success here's all the products`,
+    "data": products
+  }  
 })
 
 
@@ -215,7 +220,7 @@ router.post('/api/v1/products', checkAPIKEY(), async (ctx) => {
   return ctx.body = {
     "code": "200",
     "message": `Success Product with id: ${id} has been created`,
-    "data": products[id]
+    "data": products
   }
 })
 
@@ -231,7 +236,11 @@ router.post('/api/v1/products', checkAPIKEY(), async (ctx) => {
 //Show- Show Individual Product
 
 router.get('/api/v1/products/:id', checkAPIKEY(), async (ctx) => {
-  return ctx.body = products.filter((product) => product.id == ctx.params.id) [0]
+  return ctx.body = {
+    "code": "200",
+    "message": `Success here's product ${ctx.params.id}`,
+    "data": products.filter((product) => product.id == ctx.params.id) [0]
+  }
 })
 
 //Update - Edit Existing Product
